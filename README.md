@@ -129,9 +129,9 @@ If you changed these colors it will change the main screen color in the payment 
 
 For example: the blue color
 
-\< **color** **name**\*\* ="fawry_blue" **\>#FF000000\</** color\*\*\>
+<code>\< **color** **name**\*\* ="fawry_blue" **\>#FF000000\</** color\*\*\>
 
-\< **color**\*\* name \*\*\*\*="fawry_yellow**"\>#F44336\</** color\*\* \>
+    \< **color**\*\* name \*\*\*\*="fawry_yellow**"\>#F44336\</** color\*\* \></code>
 
 ![](./Docs/9.png)
 
