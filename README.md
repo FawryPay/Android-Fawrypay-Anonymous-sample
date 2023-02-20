@@ -39,16 +39,29 @@ This document illustrates how our gateway can be integrated within your android 
 ``` groovy
 repositories 
 { 
-  … 
+  ...
   jcenter() 
   maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' } 
 }
 ```
-2.  And add the following to your (app) <code>build.gradle</code><br/> <code>dependencies { ... implementation 'com.fawry.fawrypay:sdk:0.1.19' }</code>
+2.  And add the following to your (app) <code>build.gradle</code> and make sure you are using our [Latest Version](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample/tags) <br/> 
+``` groovy 
+dependencies 
+{ 
+  ... 
+  implementation 'com.fawry.fawrypay:sdk:0.1.19' 
+} 
+```
 
-3.  Add the following to your <code>Manifest.xml</code><br/> <code>\<application ... tools:replace="android:allowBackup" /\></code>
+3.  Add the following to your <code>Manifest.xml</code><br/> 
+``` groovy 
+\<application ... tools:replace="android:allowBackup" /\>
+```
 
-4.  Finally add the following property to your <code>build.properties</code><br/> <code>android.enableJetifier=true</code>
+4.  Finally add the following property to your <code>build.properties</code><br/> 
+```
+android.enableJetifier=true
+```
 
 # **Step 2: Initialize FawryPay Android SDK**
 
