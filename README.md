@@ -35,8 +35,15 @@ On this page we will walk you through Android SDK integration steps:
 
 This document illustrates how our gateway can be integrated within your android application in simple and easy steps. Please follow the steps in order to integrate the FawryPay android SDK in your application.
 
-1.  Add the following repository to your (root) <code>build.gradle</code><br/> <code>repositories { ... jcenter() maven { url '<https://nexus.mobile.fawry.io/repository/maven-releases/>' } }</code>
-
+1.  Add the following repository to your (root) <code>build.gradle</code><br/> 
+``` groovy
+repositories 
+{ 
+  … 
+  jcenter() 
+  maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' } 
+}
+```
 2.  And add the following to your (app) <code>build.gradle</code><br/> <code>dependencies { ... implementation 'com.fawry.fawrypay:sdk:0.1.19' }</code>
 
 3.  Add the following to your <code>Manifest.xml</code><br/> <code>\<application ... tools:replace="android:allowBackup" /\></code>
