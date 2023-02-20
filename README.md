@@ -110,7 +110,7 @@ and pass the required parameters (Required and optional parameters are determine
 |---------------|---------------|---------------|---------------|---------------|
 | activity           | Activity     | required | The activity which will be the starting point of the SDK.  | \-          |
 | \_fawryLaunchModel | FawryLaunchModel | required | Has info that needed to launch the SDK | Example in step 3 |                                       
-| \_baseUrl          | String       | required | Provided by the support team.Use staging URL for testing and switch for production to go live. | https://atfawry.fawrystaging.com (staging) https://atfawry.com (production) |     
+| \_baseUrl          | String       | required | Provided by the support team.Use staging URL for testing and switch for production to go live. | https://atfawry.fawrystaging.com (staging) <br/><br/> https://atfawry.com (production) |     
 | \_languages        |  String | required | SDK language which will affect SDK's interface languages. | FawrySdk.Languages.ENGLISH  |      
 
 2.  Card Manager Mode: Call launchCardManager from the shared instance of FawrySdkand the card manager screen will launch.
