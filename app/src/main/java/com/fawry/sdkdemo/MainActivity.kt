@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 chargeItems = chargeItems,
                 skipReceipt = false,
                 skipLogin = true,
-                payWithCardToken = false,
+                payWithCardToken = true,
                 authCaptureMode = false
             ),
             object : FawrySdkCallbacks {
