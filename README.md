@@ -114,7 +114,8 @@ and pass the required parameters (Required and optional parameters are determine
 | allow3DPayment          | Boolean                 | optional - default value = false | to allow 3D secure payment make it "true" | \-    |
 | skipReceipt             | Boolean                 | optional - default value = false      | to skip receipt after payment trial      | \-          |
 | skipLogin               | Boolean                          | optional - default value = true  | to skip login screen in which we take email and mobile   | \-          |
-| authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                                                                                                                                                                                                                                                                                                                                                  | false       |
+| authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                             | false       |
+| paymentMethod        | Payment_Method           | Optional - default value = .all  | If the user needs to show only one payment method. |.all.payAtFawry.card.wallet |
 
 **Notes:**
 
