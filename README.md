@@ -15,13 +15,13 @@ Make sure you have an active FawryPay account or [**create an account**](https:/
 
 ## **How Android SDK Looks Like**
 
-![](./Docs/1.png) ![](./Docs/2.png) ![](./Docs/3.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png)
 
 [**Download**](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample) and test our sample application.
 
 ## **How it works**
 
-<img src="./Docs/4.jpg" width="900"/>
+<img src="https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/4.jpg" width="900"/>
 
 On this page we will walk you through Android SDK integration steps:
 
@@ -73,7 +73,7 @@ android.enableJetifier=true
 
 and pass the required parameters (Required and optional parameters are determined below).
 
-![](./Docs/5.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/5.png)
 
 <br/>LaunchCustomerModel
 
@@ -125,7 +125,7 @@ and pass the required parameters (Required and optional parameters are determine
 
 1.  Payment Mode: Call launchAnonymousSDK from FawrySdk.launchAnonymousSDK
 
-![](./Docs/6.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/6.png)
 
 | **PARAMETER** | **TYPE**      | **REQUIRED**  | **DESCRIPTION** | **EXAMPLE** |
 |---------------|---------------|---------------|---------------|---------------|
@@ -136,7 +136,7 @@ and pass the required parameters (Required and optional parameters are determine
 
 2.  Card Manager Mode: Call launchCardManager from the shared instance of FawrySdkand the card manager screen will launch.
 
-![](./Docs/7.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/7.png)
 
 # **Step 3: Override the SDK colors**
 
@@ -144,7 +144,7 @@ If you want to change colors:
 
 You need to know the id of the color you want to change then add a color in your colors file in the host app with the same id but with the value you want
 
-![](./Docs/8.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/8.png)
 
 If you changed these colors it will change the main screen color in the payment fragment I made it black and red as an example in the host app, but you can change it to whatever you want.
 
@@ -156,7 +156,7 @@ For example: the blue color
 < color** name ****="fawry_yellow">#F44336</ color** >
 ```
 
-![](./Docs/9.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/9.png)
 
 ## 
 
