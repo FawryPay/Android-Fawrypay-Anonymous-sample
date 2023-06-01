@@ -15,7 +15,7 @@ Make sure you have an active FawryPay account or [**create an account**](https:/
 
 ## **How Android SDK Looks Like**
 
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png)
+![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/2.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/3.png)
 
 [**Download**](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample) and test our sample application.
 
