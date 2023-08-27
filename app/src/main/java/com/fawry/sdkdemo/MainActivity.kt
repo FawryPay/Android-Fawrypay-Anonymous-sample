@@ -71,7 +71,10 @@ class MainActivity : AppCompatActivity() {
                 skipReceipt = false,
                 skipLogin = true,
                 payWithCardToken = true,
-                authCaptureMode = false
+                authCaptureMode = false,
+                allowVoucher = false,
+                signature = null,
+                paymentMethods = FawrySdk.PaymentMethods.ALL
             ),
             object : FawrySdkCallbacks {
                 override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
