@@ -49,7 +49,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:0.1.44' 
+  implementation 'com.fawry.fawrypay:sdk:0.1.46' 
 } 
 ```
 
@@ -151,9 +151,9 @@ If you changed these colors it will change the main screen color in the payment 
 For example: the blue color
 
 ``` xml
-< color name** ="fawry_blue" >#FF000000</ color**>
+< color name ="fawry_blue" >#FF000000</ color**>
 
-< color** name ****="fawry_yellow">#F44336</ color** >
+< color** name ="fawry_yellow">#F44336</ color** >
 ```
 
 ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/9.png)

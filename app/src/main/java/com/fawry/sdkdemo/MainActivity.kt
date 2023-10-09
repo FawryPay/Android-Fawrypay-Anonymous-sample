@@ -9,6 +9,7 @@ import com.fawry.fawrypay.FawrySdk
 import com.fawry.fawrypay.interfaces.FawryPreLaunch
 import com.fawry.fawrypay.interfaces.FawrySdkCallbacks
 import com.fawry.fawrypay.models.*
+import com.google.gson.Gson
 
 
 class MainActivity : AppCompatActivity() {
@@ -70,7 +71,10 @@ class MainActivity : AppCompatActivity() {
                 skipReceipt = false,
                 skipLogin = true,
                 payWithCardToken = true,
-                authCaptureMode = false
+                authCaptureMode = false,
+                allowVoucher = false,
+                signature = null,
+                paymentMethods = FawrySdk.PaymentMethods.ALL
             ),
             object : FawrySdkCallbacks {
                 override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
@@ -83,24 +87,34 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onSuccess(msg: String, data: Any?) {
                     Log.d("SDK_Team","$data")
-                    Toast.makeText(this@MainActivity, "on success ${msg}", Toast.LENGTH_SHORT)
+
+                    var gson = Gson()
+                    var parseResponse = gson.fromJson(data.toString(), CreatePayRefNoResponse::class.java)
+
+
+                    Toast.makeText(this@MainActivity, "on success ${msg}", Toast.LENGTH_LONG)
                         .show()
                 }
 
                 override fun onPaymentCompleted(msg: String, data: Any?) {
+                    Log.d("SDK_Team","$data")
+
+                    var gson = Gson()
+                    var parseResponse = gson.fromJson(data.toString(), CreatePayRefNoResponse::class.java)
 
                     Toast.makeText(
                         this@MainActivity,
                         "on payment completed $data",
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
 
                 override fun onFailure(error: String) {
+                    Log.d("SDK_Team","$error")
                     Toast.makeText(
                         this@MainActivity,
                         "on failure ${error}",
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
             })
