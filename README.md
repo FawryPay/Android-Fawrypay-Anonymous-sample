@@ -49,7 +49,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:0.1.61' 
+  implementation 'com.fawry.fawrypay:sdk:0.1.62' 
 } 
 ```
 
