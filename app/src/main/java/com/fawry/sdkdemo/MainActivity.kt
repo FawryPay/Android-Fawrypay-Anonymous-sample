@@ -59,8 +59,8 @@ class MainActivity : AppCompatActivity() {
             FawryLaunchModel(
                 launchCustomerModel = LaunchCustomerModel(
                     customerName = customerName,
-                    customerEmail = customerEmail,
-                    customerMobile = customerMobile,
+                    customerEmail = null,
+                    customerMobile = null,
                     customerProfileId = customerProfileId
                 ),
                 launchMerchantModel = LaunchMerchantModel(

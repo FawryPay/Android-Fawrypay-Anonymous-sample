@@ -4,7 +4,7 @@ pluginManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' }
+        maven { url 'https://nexus.mobile.fawry.io/repository/maven-public/' }
     }
 }
 dependencyResolutionManagement {
@@ -13,7 +13,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' }
+        maven { url 'https://nexus.mobile.fawry.io/repository/maven-public/' }
     }
 }
 rootProject.name = "SDK Demo"
