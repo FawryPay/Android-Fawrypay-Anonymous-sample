@@ -41,7 +41,7 @@ repositories
 { 
   ...
   jcenter() 
-  maven { url 'https://nexus.mobile.fawry.io/repository/maven-public/' } 
+  maven { url 'https://nexusmobile.fawrystaging.com:2597/repository/maven-public/' } 
 }
 ```
 2.  And add the following to your (app) <code>build.gradle</code> and make sure you are using our [Latest Version](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample/tags) <br/> 
