@@ -1,3 +1,4 @@
+
 # 
 
 # **FawryPay android SDK**
@@ -100,6 +101,14 @@ and pass the required parameters (Required and optional parameters are determine
 | description   | String   | optional     | \-              | This is description |
 | price         | String   | required     | \-              | 200.00              |
 | quantity      | String   | required     | \-              | 1                   |
+chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split payment)| \-              |   |
+
+<br/>ChargeItemAccount
+
+| **PARAMETER** | **TYPE** | **REQUIRED** | **DESCRIPTION** | **EXAMPLE**         |
+|---------------|---------------|---------------|---------------|---------------|
+| accountCode| String   | required     | \-              | |
+| amount| Double | required     | \-              |  |
 
 <br/>FawryLaunchModel
 
