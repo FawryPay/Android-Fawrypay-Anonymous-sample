@@ -30,11 +30,21 @@ class MainActivity : AppCompatActivity() {
     var merchantSecretCode = "69826c87-963d-47b7-8beb-869f7461fd93"
 
     val chargeItems = ArrayList<PayableItem>()
+    val accounts = arrayListOf(
+                ChargeItemAccount(
+                    accountCode= "770000017819",
+                amount= 500.00
+            ),
+                ChargeItemAccount(
+                    accountCode= "770000017942",
+                    amount= 500.00
+                ))
     val billItem = BillItems(
         itemId = "testId",
         description = "",
         quantity = "1",
-        price = "10.00"
+        price = "10.00",
+//        chargeItemAccounts = accounts //use it for split payment flow
     )
 
 
