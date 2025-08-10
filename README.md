@@ -16,7 +16,9 @@ Make sure you have an active FawryPay account or [**create an account**](https:/
 
 ## **How Android SDK Looks Like**
 
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/1.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/2.png) ![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/3.png)
+<img src="https://github.com/user-attachments/assets/c42a82ae-335e-497a-9b8b-094a6414ac85" width="250" height="400"/>
+<img src="https://github.com/user-attachments/assets/d26fc52a-f063-4d4c-898b-e581778a86f2" width="250" height="400"/>
+
 
 [**Download**](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample) and test our sample application.
 
@@ -50,7 +52,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:0.1.85' 
+  implementation 'com.fawry.fawrypay:sdk:2.0.5' 
 } 
 ```
 
@@ -74,7 +76,7 @@ android.enableJetifier=true
 
 and pass the required parameters (Required and optional parameters are determined below).
 
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/5.png)
+<img width="338" height="363" src="https://github.com/user-attachments/assets/61236adb-2cbf-4426-b5bb-06cca2ce4338" />
 
 <br/>LaunchCustomerModel
 
@@ -93,7 +95,7 @@ and pass the required parameters (Required and optional parameters are determine
 | merchantRefNum | String   | required            | Merchant's transaction reference number is random 10 alphanumeric digits. | A1YU7MKI09            |
 | secretCode     | String   | required            | provided by support                                                       | 4b8jw3j2-8gjhfrc-4wc4-scde-453dek3d |
 
-<br/>ChargeItemsParamsModel
+<br/>ChargeItemsParamsModel ArrayList<BillItems>()
 
 | **PARAMETER** | **TYPE** | **REQUIRED** | **DESCRIPTION** | **EXAMPLE**         |
 |---------------|---------------|---------------|---------------|---------------|
@@ -121,10 +123,8 @@ chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split pay
 | allowVoucher            | Boolean  | optional - default value = false  | True if your account supports voucher code | \-          |
 | payWithCardToken        | Boolean   | required   | If true, the user will pay with a card token ( one of the saved cards or add new card to be saved )If false, the user will pay with card details without saving | \-   | 
 | allow3DPayment          | Boolean                 | optional - default value = false | to allow 3D secure payment make it "true" | \-    |
-| skipReceipt             | Boolean                 | optional - default value = false      | to skip receipt after payment trial      | \-          |
-| skipLogin               | Boolean                          | optional - default value = true  | to skip login screen in which we take email and mobile   | \-          |
-| authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                             | false       |
-| paymentMethod        | Payment_Method           | Optional - default value = .all  | If the user needs to show only one payment method. |.all.payAtFawry.card.wallet |
+ authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                             | false       |
+| paymentMethods        | PaymentMethods.ALL           | Optional - default value = .all  | If the user needs to show only one payment method. |.all.payAtFawry.card.wallet |
 
 **Notes:**
 
@@ -133,40 +133,33 @@ chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split pay
 ## Calling Modes:
 
 1.  Payment Mode: Call launchAnonymousSDK from FawrySdk.launchAnonymousSDK
-
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/6.png)
+<img width="704" height="732" alt="image" src="https://github.com/user-attachments/assets/c55e0533-514c-4644-98b0-fd3ae59720df" />
 
 | **PARAMETER** | **TYPE**      | **REQUIRED**  | **DESCRIPTION** | **EXAMPLE** |
 |---------------|---------------|---------------|---------------|---------------|
 | activity           | Activity     | required | The activity which will be the starting point of the SDK.  | \-          |
 | \_fawryLaunchModel | FawryLaunchModel | required | Has info that needed to launch the SDK | Example in step 3 |                                       
 | \_baseUrl          | String       | required | Provided by the support team.Use staging URL for testing and switch for production to go live. | https://atfawry.fawrystaging.com (staging) <br/><br/> https://atfawry.com (production) |     
-| \_languages        |  String | required | SDK language which will affect SDK's interface languages. | FawrySdk.Languages.ENGLISH  |      
+| \_languages        |  String | required | SDK language which will affect SDK's interface languages. | Languages.ENGLISH  |      
 
 2.  Card Manager Mode: Call launchCardManager from the shared instance of FawrySdkand the card manager screen will launch.
-
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/7.png)
+<img width="611" height="617" alt="image" src="https://github.com/user-attachments/assets/20475d4e-d05a-40d5-9b71-7e8f4f596cdb" />
 
 # **Step 3: Override the SDK colors**
 
 If you want to change colors:
 
 You need to know the id of the color you want to change then add a color in your colors file in the host app with the same id but with the value you want
+<img width="300" height="500" alt="image" src="https://github.com/user-attachments/assets/88980065-3329-4713-a932-db9d69bb0cdb" />
 
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/8.png)
-
-If you changed these colors it will change the main screen color in the payment fragment I made it black and red as an example in the host app, but you can change it to whatever you want.
-
-For example: the blue color
-
-``` xml
-< color name ="fawry_blue" >#FF000000</ color**>
-
-< color** name ="fawry_yellow">#F44336</ color** >
-```
-
-![](https://raw.githubusercontent.com/FawryPay/Android-Fawrypay-Anonymous-sample/master/Docs/9.png)
-
+If you changed these colors it will change the main screen color in the payment fragment
+these are the main colors ids of the screen
+fawrypay_white
+fawrypay_enabled_button_color
+fawrypay_text_payment_methods_color
+fawrypay_screen_header_text_color
+fawrypay_grey_text_color
+fawrypay_screen_background_color
 ## 
 
 ## **Payment Flows:**
@@ -184,128 +177,37 @@ So if this flag is true you will need to pass customerProfileId to be able to co
 
 1.  launchAnonymousSDK:\
     \
-    There are 5 callbacks:
-    1.  onInit() { }\
-        called before launching the flow successfully.
+    There are 3 callbacks:
 
-    2.  onPreLaunch(onPreLaunch: FawryPreLaunch) {onPreLaunch.onContinue() }\
-        called when the flow is launched.
+    1.  onPaymentCompleted(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?,
+                    error: FawryPayError?
+                ){}\
+        will be called only whether the payment passed or not. And it's called upon receiving the response of the payment either success or fail.
 
-    3.  onFailure(error: String) { }
+    2.  onSuccess(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?
+                ){}
+
+        -   if you enabled the receipt, this callback will be called after closing the receipt and the payment success.
+
+        -   if you disabled the receipt, this callback will be called upon the finish of the payment screen and the payment success.
+
+    3.  onFailure(error: FawryPayError) { }
 
         -   if you enabled the receipt, this callback will be called after clicking the done button in the receipt and the payment failed.
 
         -   if you disabled the receipt, this callback will be called upon the finish of the payment screen and the payment failed.
 
-    4.  onPaymentCompleted(msg: String, data: Any?){}\
-        will be called only whether the payment passed or not. And it's called upon receiving the response of the payment either success or fail.
-
-    5.  onSuccess(msg: String, data: Any?){}
-
-        -   if you enabled the receipt, this callback will be called after clicking the done button in the receipt and the payment success.
-
-        -   if you disabled the receipt, this callback will be called upon the finish of the payment screen and the payment success.
-2.  launchCardManager:\
+3.  launchCardManagerFlow:\
     \
-    There are 3 callbacks:
-    1.  onInit() { }\
-        called before launching the flow successfully.
+    There are 2 callbacks:
 
-    2.  onPreLaunch(onPreLaunch: FawryPreLaunch) {onPreLaunch.onContinue() }\
-        called when the flow is launched.
-
-    3.  onFailure(error: String) { }\
+    1.  onFailure(error: String) { }\
         called in case of failure in the initialization of the flow.
 
-    4.  onPaymentCompleted(msg: String, data: Any?){}\
-        not used in this flow.
-
-    5.  onSuccess(msg: String, data: Any?){}\
+    2.  onSuccess(message: String){}\
         not used in this flow.
         
-
-3.  proguard-rules:\
-    \
-
-# Preserve all native method names and the names of their classes.
--keepclasseswithmembernames, includedescriptorclasses class * {
-    native <methods>;
-}
-
--keepclassmembers enum * {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
-
--keepclassmembers class * implements java.io.Serializable {
-    static final long serialVersionUID;
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
-    private void writeObject(java.io.ObjectOutputStream);
-    private void readObject(java.io.ObjectInputStream);
-    java.lang.Object writeReplace();
-    java.lang.Object readResolve();
-}
-##---------------End: settings, recommended for libraries
-
-##---------------Begin: proguard configuration for Gson  ----------
-# Gson uses generic type information stored in a class file when working with fields. Proguard
-# removes such information by default, so configure it to keep all of it.
--keepattributes Signature
-
-# For using GSON @Expose annotation
--keepattributes *Annotation*
-
-# Gson specific classes
--keep class sun.misc.Unsafe { *; }
-#-keep class com.google.gson.stream.** { *; }
-
-# Prevent proguard from stripping interface information from TypeAdapterFactory,
-# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
--keep class * implements com.google.gson.TypeAdapterFactory
--keep class * implements com.google.gson.JsonSerializer
--keep class * implements com.google.gson.JsonDeserializer
--keep class * implements com.google.gson.** { *;}
-
-##---------------End: proguard configuration for Gson  ----------
-
-##---------------Begin: custom library settings
-# Keep all classes from "data" subfolder (and nested subfolders), because they can be serialized/deserialized.
--keep class com.fawry.fawrypay.FawrySdk { *; }
--keep class com.fawry.fawrypay.FawrySdk$*  { *; }
--keep class com.fawry.fawrypay.interfaces.FawrySdkCallbacks { *; }
--keep class com.fawry.fawrypay.FawrySdk$Languages { *; }
--keep class com.fawry.fawrypay.FawrySdk$PaymentMethods { *; }
--keep class com.fawry.fawrypay.models.** { *;}
--keep class com.fawry.fawrypay.interfaces.** { *; }
--keep class com.fawry.fawrypay.utils.** { *; }
--keep class com.fawry.fawrypay.ui.payment_module.payment_frag.** { *; }
--keep class com.fawry.fawrypay.ui.payment_module.** { *; }
--keep class com.fawry.fawrypay.ui.address_module.** { *; }
--keep class com.fawry.fawrypay.ui.manage_cards_module.** { *; }
--keep class com.fawry.fawrypay.ui.manage_cards_module.card_list_frag.** { *; }
--keep class com.fawry.fawrypay.services.** { *; }
--keep class com.fawry.fawrypay.PaymentStatusService { *; }
-
-##---------------End: custom library settings  ----------
-
-# Keep RecyclerView classes and interfaces
--keep class androidx.recyclerview.widget.** { *; }
--keep class androidx.recyclerview.widget.RecyclerView { *; }
--keep class androidx.recyclerview.widget.LinearLayoutManager { *; }
-
-# Keep ViewHolder classes and interfaces
--keep class **.MyViewHolder { *; }
-
-# Keep LayoutManager classes and interfaces
--keep class androidx.recyclerview.widget.RecyclerView$LayoutManager { *; }
-
-# Keep ItemAnimator classes and interfaces
--keep class androidx.recyclerview.widget.RecyclerView$ItemAnimator { *; }
-
-# Keep any classes that implement RecyclerView.OnScrollListener or RecyclerView.ItemDecoration
--keep class * extends androidx.recyclerview.widget.RecyclerView$OnScrollListener { *; }
--keep class * extends androidx.recyclerview.widget.RecyclerView$ItemDecoration { *; }
-
-# Keep any classes that implement RecyclerView.Adapter or RecyclerView.ViewHolder
--keep class * extends androidx.recyclerview.widget.RecyclerView$Adapter { *; }
--keep class * extends androidx.recyclerview.widget.RecyclerView$ViewHolder { *; }
