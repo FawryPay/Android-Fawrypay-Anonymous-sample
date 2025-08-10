@@ -1,16 +1,22 @@
 package com.fawry.sdkdemo
-
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.fawry.fawrypay.FawrySdk
-import com.fawry.fawrypay.interfaces.FawryPreLaunch
-import com.fawry.fawrypay.interfaces.FawrySdkCallbacks
-import com.fawry.fawrypay.models.*
-import com.fawry.fawrypay.utils.AppConstants
-import com.fawry.fawrypay.utils.FawryUtils
+import com.fawry.fawrypay.domain.models.BillItems
+import com.fawry.fawrypay.domain.models.ChargeItemAccount
+import com.fawry.fawrypay.domain.models.CreatePayRefNoResponse
+import com.fawry.fawrypay.domain.models.FawryLaunchModel
+import com.fawry.fawrypay.domain.models.FawryPayError
+import com.fawry.fawrypay.domain.models.LaunchCustomerModel
+import com.fawry.fawrypay.domain.models.LaunchMerchantModel
+import com.fawry.fawrypay.utils.CardManagerCallbacks
+import com.fawry.fawrypay.utils.FawrySdkCallbacks
+import com.fawry.fawrypay.utils.fawrySdk.LaunchFawrySdk
+import com.fawry.fawrypay.utils.fawrySdk.enums.Languages
+import com.fawry.fawrypay.utils.fawrySdk.enums.PaymentMethods
+import com.fawry.fawrypay.utils.fawrySdk.enums.PaymentStatus
 import com.google.gson.Gson
 
 
@@ -20,16 +26,16 @@ class MainActivity : AppCompatActivity() {
 
     //customer info
     var customerName = "testName"
-    var customerMobile = ""
+    var customerMobile = "01234567899"
     var customerEmail =
         "test@test.com" //required in saving cards for payment with card tokenization
     var customerProfileId = "7117" //required in saving cards for payment with card tokenization
 
     //merchant info
-    var merchantCode = "+/IAAY2notgLsdUB9VeTFg=="
-    var merchantSecretCode = "69826c87-963d-47b7-8beb-869f7461fd93"
+    var merchantCode = "770000020169"
+    var merchantSecretCode = "57e05132-63c3-41f6-83ed-164640d5e98d"
 
-    val chargeItems = ArrayList<PayableItem>()
+    val chargeItems = ArrayList<BillItems>()
     val accounts = arrayListOf(
                 ChargeItemAccount(
                     accountCode= "770000017819",
@@ -64,13 +70,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startPayment() {
-        FawrySdk.launchAnonymousSDK(
-            this, FawrySdk.Languages.ENGLISH, baseUrl,
-            FawryLaunchModel(
+        LaunchFawrySdk.launchAnonymousSDK(
+            activity = this,
+            _languages = Languages.ENGLISH,
+            _baseUrl = baseUrl,
+            _fawryLaunchModel = FawryLaunchModel(
                 launchCustomerModel = LaunchCustomerModel(
                     customerName = customerName,
-                    customerEmail = null,
-                    customerMobile = null,
+                    customerEmail = customerEmail,
+                    customerMobile = customerMobile,
                     customerProfileId = customerProfileId
                 ),
                 launchMerchantModel = LaunchMerchantModel(
@@ -78,65 +86,49 @@ class MainActivity : AppCompatActivity() {
                     secretCode = merchantSecretCode,
                     merchantRefNum = "${System.currentTimeMillis()}"
                 ),
+                allowVoucher = true,
                 allow3DPayment = true,
                 chargeItems = chargeItems,
                 skipReceipt = false,
-                skipLogin = true,
                 payWithCardToken = true,
+                paymentMethods = PaymentMethods.ALL,
                 authCaptureMode = false,
-                allowVoucher = false,
                 signature = null,
-                paymentMethods = FawrySdk.PaymentMethods.ALL
             ),
-            object : FawrySdkCallbacks {
-                override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
-                    onPreLaunch.onContinue()
-                }
-
-                override fun onInit() {
-
-                }
-
-                override fun onSuccess(msg: String, data: Any?) {
-                    Log.d("SDK_Team","$data")
-
-                    var gson = Gson()
-                    var parseResponse = gson.fromJson(data.toString(), CreatePayRefNoResponse::class.java)
-
-
-                    Toast.makeText(this@MainActivity, "on success ${msg}", Toast.LENGTH_LONG)
+            _callback = object : FawrySdkCallbacks {
+                override fun onSuccess(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?
+                ) {
+                    Toast.makeText(this@MainActivity, "on success ${paymentStatus}", Toast.LENGTH_SHORT)
                         .show()
+                    Log.d("SDKTeam", "onSuccess data: ${data}")
+                    Log.d("SDKTeam", "onSuccess paymentStatus: ${paymentStatus}")
                 }
 
-                override fun onPaymentCompleted(msg: String, data: Any?) {
-                    Log.d("SDK_Team","$data")
-
-                    var gson = Gson()
-                    var parseResponse = gson.fromJson(data.toString(), CreatePayRefNoResponse::class.java)
-
-                    Toast.makeText(
-                        this@MainActivity,
-                        "on payment completed $data",
-                        Toast.LENGTH_LONG
-                    ).show()
+                override fun onPaymentCompleted(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?,
+                    error: FawryPayError?
+                ) {
+                    Toast.makeText(this@MainActivity, "onPaymentCompleted ${paymentStatus}", Toast.LENGTH_SHORT)
+                        .show()
+                    Log.d("SDKTeam", "onPaymentCompleted data: ${data}")
+                    Log.d("SDKTeam", "onPaymentCompleted paymentStatus: ${paymentStatus}")
+                    Log.d("SDKTeam", "onPaymentCompleted error: ${error}")
                 }
 
-                override fun onFailure(error: String) {
-                    Log.d("SDK_Team","$error")
-                    Toast.makeText(
-                        this@MainActivity,
-                        "on failure ${error}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                override fun onFailure(error: FawryPayError) {
+                    Log.d("SDKTeam",  "onFailure error: ${error}")
                 }
             })
     }
 
     private fun manageCards() {
-        FawrySdk.launchCardManager(
-            this,
-            FawrySdk.Languages.ENGLISH,
-            baseUrl,
+        LaunchFawrySdk.launchCardManagerFlow(
+            activity = this,
+            _languages = Languages.ENGLISH,
+            _baseUrl = baseUrl,
             FawryLaunchModel(
                 LaunchCustomerModel(
                     customerName = customerName,
@@ -148,24 +140,14 @@ class MainActivity : AppCompatActivity() {
                     merchantCode = merchantCode,
                     secretCode = merchantSecretCode
                 )
-            ), object : FawrySdkCallbacks {
-                override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
-                    onPreLaunch.onContinue()
+            ), _callback = object : CardManagerCallbacks {
 
-                }
-
-                override fun onInit() {  }
-
-                override fun onPaymentCompleted(msg: String, data: Any?) {
-                    //won't be called in this flow
-                }
-
-                override fun onSuccess(msg: String, data: Any?) {
-                    //won't be called in this flow
+                override fun onSuccess(message: String) {
+                    Log.d("SDKTeam", "onSuccess message: ${message}")
                 }
 
                 override fun onFailure(error: String) {
-                    Toast.makeText(this@MainActivity, error, Toast.LENGTH_SHORT).show()
+                    Log.d("SDKTeam",  "onFailure error: ${error}")
                 }
             })
     }
