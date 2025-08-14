@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
     var customerProfileId = "7117" //required in saving cards for payment with card tokenization
 
     //merchant info
-    var merchantCode = "770000020169"
-    var merchantSecretCode = "57e05132-63c3-41f6-83ed-164640d5e98d"
+    var merchantCode = "400000012230"
+    var merchantSecretCode = "69826c87-963d-47b7-8beb-869f7461fd93"
 
     val chargeItems = ArrayList<BillItems>()
     val accounts = arrayListOf(
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun startPayment() {
         LaunchFawrySdk.launchAnonymousSDK(
             activity = this,
-            _languages = Languages.ENGLISH,
+            _languages = Languages.ARABIC,
             _baseUrl = baseUrl,
             _fawryLaunchModel = FawryLaunchModel(
                 launchCustomerModel = LaunchCustomerModel(
