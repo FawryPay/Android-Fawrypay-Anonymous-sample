@@ -1,4 +1,5 @@
 
+
 # 
 
 # **FawryPay android SDK**
@@ -53,7 +54,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:2.0.8' 
+  implementation 'com.fawry.fawrypay:sdk:2.0.9' 
 } 
 ```
 
@@ -86,7 +87,7 @@ and pass the required parameters (Required and optional parameters are determine
 | customerName      | String   | optional     | \-                                              | Name Name                                          |
 | customerEmail     | String   | optional     | \-                                              | [email\@email.com](mailto:email@email.com){.email} |
 | customerMobile    | String   | optional     | \-                                              | +0100000000                                        |
-| customerProfileId | String   | optional     | mandatory in case of payments using saved cards | 1234                                               |
+| customerProfileId | String   | optional     | mandatory in case of payments using saved cards and card tokenization | 1234                                               |
 
 <br/>LaunchMerchantModel
 
@@ -126,6 +127,7 @@ chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split pay
 | allow3DPayment          | Boolean                 | optional - default value = false | to allow 3D secure payment make it "true" | \-    |
  authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                             | false       |
 | paymentMethods        | PaymentMethods.ALL           | Optional - default value = .all  | If the user needs to show only one payment method. |.all.payAtFawry.card.wallet |
+| enableTokenization| Boolean                            | required  | if the client wants to enable card tokenization without showing the saved cards |false |
 
 **Notes:**
 
