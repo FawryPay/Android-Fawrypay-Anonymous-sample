@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
                 payWithCardToken = true,
                 paymentMethods = PaymentMethods.ALL,
                 authCaptureMode = false,
+                enableTokenization = true
             ),
             _callback = object : FawrySdkCallbacks {
                 override fun onSuccess(
