@@ -54,7 +54,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:2.0.12' 
+  implementation 'com.fawry.fawrypay:sdk:2.0.13' 
 } 
 ```
 
@@ -146,7 +146,8 @@ chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split pay
 | \_languages        |  String | required | SDK language which will affect SDK's interface languages. | Languages.ENGLISH  |      
 
 2.  Card Manager Mode: Call launchCardManager from the shared instance of FawrySdkand the card manager screen will launch.
-<img width="611" height="617" alt="image" src="https://github.com/user-attachments/assets/20475d4e-d05a-40d5-9b71-7e8f4f596cdb" />
+<img width="940" height="695" alt="image" src="https://github.com/user-attachments/assets/fb3dd298-8ae4-4756-a874-cee016788b4b" />
+
 
 # **Step 3: Override the SDK colors**
 
