@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun startPayment() {
         LaunchFawrySdk.launchAnonymousSDK(
             activity = this,
-            _languages = Languages.ARABIC,
+            _languages = Languages.ENGLISH,
             _baseUrl = baseUrl,
             _fawryLaunchModel = FawryLaunchModel(
                 launchCustomerModel = LaunchCustomerModel(
@@ -126,8 +126,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun manageCards() {
         LaunchFawrySdk.launchCardManagerFlow(
-            activity = this,
-            _languages = Languages.ENGLISH,
+            activity = this, _languages = Languages.ENGLISH,
             _baseUrl = baseUrl,
             FawryLaunchModel(
                 LaunchCustomerModel(
@@ -142,11 +141,7 @@ class MainActivity : AppCompatActivity() {
                 )
             ), _callback = object : CardManagerCallbacks {
 
-                override fun onSuccess(message: String) {
-                    Log.d("SDKTeam", "onSuccess message: ${message}")
-                }
-
-                override fun onFailure(error: String) {
+                override fun onFailure(error: FawryPayError) {
                     Log.d("SDKTeam",  "onFailure error: ${error}")
                 }
             })
