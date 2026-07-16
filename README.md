@@ -54,7 +54,7 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:2.0.13' 
+  implementation 'com.fawry.fawrypay:sdk:2.1.80' 
 } 
 ```
 
