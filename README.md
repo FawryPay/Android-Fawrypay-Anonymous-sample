@@ -128,7 +128,7 @@ chargeItemAccounts | ArrayList\<ChargeItemAccount> | optional (used in split pay
 | payWithCardToken        | Boolean   | required   | If true, the user will pay with a card token ( one of the saved cards or add new card to be saved )If false, the user will pay with card details without saving | \-   | 
 | allow3DPayment          | Boolean                 | optional - default value = false | to allow 3D secure payment make it "true" | \-    |
  authCaptureMode         | Boolean                          | optional - default value = false                                                                                                                                | depends on refund configuration: will be true when refund is enabled and false when refund is disabled                                                                                             | false       |
-| excludePaymentMethods| PaymentMethods| Optional  | If the host app needs to exclude multiple payment methods. |PaymentMethods.CREDIT_CARD |
+| excludePaymentMethods| PaymentMethods| Optional  | If the host app needs to exclude multiple payment methods. |arrayListOf(PaymentMethods.CREDIT_CARD) |
 
 **Notes:**
 
