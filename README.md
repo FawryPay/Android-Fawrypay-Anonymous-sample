@@ -47,7 +47,17 @@ repositories
 { 
   ...
   jcenter() 
-  maven { url 'https://nexusmobile.fawrystaging.com:2597/repository/maven-public/' } 
+  maven {
+            credentials {
+                username = "put-your-username"
+                password = "put-your-password"
+            }
+            metadataSources {
+                mavenPom()
+                artifact()
+            }
+            url 'https://nexus-mobile.fawrystaging.com:8047/repository/maven-public/'
+        }
 }
 ```
 2.  And add the following to your (app) <code>build.gradle</code> and make sure you are using our [Latest Version](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample/tags) <br/> 
@@ -55,7 +65,12 @@ repositories
 dependencies 
 { 
   ... 
-  implementation 'com.fawry.fawrypay:sdk:2.1.80' 
+  implementation('com.fawry.fawrypay:sdk:2.1.84') {
+        artifact {
+            type = 'aar'
+            extension = 'aar'
+        }
+    }
 } 
 ```
 
