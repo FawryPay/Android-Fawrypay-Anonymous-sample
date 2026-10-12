@@ -1,0 +1,16 @@
+app/build.gradle
+  h_8dc0df407a6426 41-46
+settings.gradle
+  h_8dc0df407a6426 7-17,26-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0822ed6a40ad5567d556856cec83084e483bd389",
+  "prompts": {},
+  "humans": {
+    "h_8dc0df407a6426": {
+      "author": "AbdElRahman Khater <abdelrahman.khater@fawry.com>"
+    }
+  }
+}
