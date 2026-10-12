@@ -91,7 +91,6 @@ class MainActivity : AppCompatActivity() {
                 chargeItems = chargeItems,
                 skipReceipt = false,
                 payWithCardToken = true,
-                paymentMethods = PaymentMethods.ALL,
                 authCaptureMode = false,
                 enableTokenization = true
             ),
@@ -140,7 +139,6 @@ class MainActivity : AppCompatActivity() {
                     secretCode = merchantSecretCode
                 )
             ), _callback = object : CardManagerCallbacks {
-
                 override fun onFailure(error: FawryPayError) {
                     Log.d("SDKTeam",  "onFailure error: ${error}")
                 }

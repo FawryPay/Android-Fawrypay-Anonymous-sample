@@ -4,7 +4,17 @@ pluginManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://nexusmobile.fawrystaging.com:2597/repository/maven-public/' }
+        maven {
+            credentials {
+                username = "put-your-username"
+                password = "put-your-password"
+            }
+            metadataSources {
+                mavenPom()
+                artifact()
+            }
+            url 'https://nexus-mobile.fawrystaging.com:8047/repository/maven-public/'
+        }
     }
 }
 dependencyResolutionManagement {
@@ -13,7 +23,17 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://nexusmobile.fawrystaging.com:2597/repository/maven-public/' }
+        maven {
+            credentials {
+                username = "put-your-username"
+                password = "put-your-password"
+            }
+            metadataSources {
+                mavenPom()
+                artifact()
+            }
+            url 'https://nexus-mobile.fawrystaging.com:8047/repository/maven-public/'
+        }
     }
 }
 rootProject.name = "SDK Demo"
